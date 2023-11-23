@@ -18,43 +18,15 @@ def json_to_table(json_data, parent_key='', table=None):
     
     return table
 
-# Your JSON data
-json_data = {
-    "@type": "EnvironmentExtensions",
-    "connections": {
-        "@type": "Connections",
-        "connection": [
-            {
-                "@type": "Connection",
-                "field": [
-                    {
-                        "@type": "Field",
-                        "id": "authType",
-                        "encryptedValueSet": False,
-                        "usesEncryption": False,
-                        "componentOverride": False,
-                        "useDefault": True
-                    },
-                    # ... (other fields)
-                ],
-                "id": "4d3f80eb-5a5e-421e-b596-c5a56e739607",
-                "name": "Boomi_Service_Slack_Connector"
-            }
-        ]
-    },
-    "operations": {
-        "@type": "Operations",
-        "operation": [
-            # ... (other operations)
-        ]
-    },
-    "environmentId": "b8ece4bb-0306-45dc-8911-c31dd6e11d14",
-    "extensionGroupId": "",
-    "id": "b8ece4bb-0306-45dc-8911-c31dd6e11d14"
-}
+# Replace 'input.json' and 'output.csv' with your actual file names
+json_file_path = Path(__file__).parent / 'test/test.json'
+#json_file_path = '/test/test.json'
+csv_file_path = 'output.csv'
+
+json_to_csv(json_file_path, csv_file_path)
 
 # Convert JSON to nested table structure
-table_structure = json_to_table(json_data)
+table_structure = json_to_table(json_file_path)
 
 # Print the result
 for key, value in table_structure.items():
