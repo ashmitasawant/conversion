@@ -1,0 +1,5 @@
+Field ID,Encrypted Value Set,Uses Encryption,Component Override,Use Default
+authType,False,False,False,True
+oauthOptions/OAuth2Config/credentials/@clientId,False,False,False,True
+oauthOptions/OAuth2Config/credentials/@clientSecret,False,False,False,True
+oauthOptions/OAuth2Config/credentials/@accessToken,False,True,False,True
