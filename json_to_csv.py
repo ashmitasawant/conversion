@@ -23,7 +23,7 @@ def json_to_table(json_data, parent_key='', table=None):
 # Replace 'input.json' and 'output.csv' with your actual file names
 json_file_path = Path(__file__).parent / 'test/test.json'
 #json_file_path = '/test/test.json'
-
+csv_file_path = 'output.csv'
 
 json_to_table(json_file_path, csv_file_path)
 
