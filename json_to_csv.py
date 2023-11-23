@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 def json_to_table(json_data, parent_key='', table=None):
     with open(json_data, 'r') as json_input:
-        data = json.load(json_input)
+        json_data = json.load(json_input)
         
     if table is None:
         table = {}
@@ -26,7 +26,7 @@ def json_to_table(json_data, parent_key='', table=None):
 
 
 # Convert JSON to nested table structure
-table_structure = json_to_table(data)
+table_structure = json_to_table(json_data)
 
 # Print the result
 for key, value in table_structure.items():
