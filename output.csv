@@ -1,16 +1,2 @@
 Key,Value
-@type,EnvironmentExtensions
-connections/@type,Connections
-connections/connection/0/@type,Connection
-connections/connection/0/field/0/@type,Field
-connections/connection/0/field/0/id,authType
-connections/connection/0/field/0/encryptedValueSet,False
-connections/connection/0/field/0/usesEncryption,False
-connections/connection/0/field/0/componentOverride,False
-connections/connection/0/field/0/useDefault,True
-connections/connection/0/id,4d3f80eb-5a5e-421e-b596-c5a56e739607
-connections/connection/0/name,Boomi_Service_Slack_Connector
-operations/@type,Operations
-environmentId,b8ece4bb-0306-45dc-8911-c31dd6e11d14
-extensionGroupId,
-id,b8ece4bb-0306-45dc-8911-c31dd6e11d14
+,test/test.json
