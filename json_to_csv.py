@@ -17,7 +17,7 @@ def json_to_csv(json_file, csv_file):
     fields = connection["field"]
 
     # Create a CSV file and write the tabular data
-     with open("table.csv", mode="w", newline="") as csvfile:
+    with open("table.csv", mode="w", newline="") as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(["Field ID", "Encrypted Value Set", "Uses Encryption", "Component Override", "Use Default"])
     
