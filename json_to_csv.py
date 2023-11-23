@@ -4,6 +4,7 @@ from pathlib import Path
 def json_to_table(json_data, parent_key='', table=None):
     with open(json_data, 'r') as json_input:
         data = json.load(json_input)
+        
     if table is None:
         table = {}
     
@@ -20,12 +21,9 @@ def json_to_table(json_data, parent_key='', table=None):
     
    
 
-# Replace 'input.json' and 'output.csv' with your actual file names
-json_file_path = Path(__file__).parent / 'test/test.json'
-#json_file_path = '/test/test.json'
-csv_file_path = 'output.csv'
 
-json_to_table(json_file_path, csv_file_path)
+
+
 
 # Convert JSON to nested table structure
 table_structure = json_to_table(data)
@@ -43,4 +41,9 @@ with open(csv_file_path, 'w', newline='') as csv_file:
         csv_writer.writerow([key, value])
 
 print(f"CSV file '{csv_file_path}' created successfully.")
+# Replace 'input.json' and 'output.csv' with your actual file names
+json_file_path = Path(__file__).parent / 'test/test.json'
+#json_file_path = '/test/test.json'
+csv_file_path = 'output.csv'
 
+json_to_table(json_file_path, csv_file_path)
