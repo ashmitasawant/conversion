@@ -13,9 +13,11 @@ def json_to_csv(json_file, csv_file):
     else:
         raise ValueError("Invalid JSON format")
 
-    with open(csv_file, 'w', newline='') as csv_output:
-        writer = csv.DictWriter(csv_output, fieldnames=keys)
-        writer.writeheader()
+    with open("table.csv", mode="w", newline="") as csvfile:
+    csv_writer = csv.writer(csvfile)
+    csv_writer.writerow(["Field ID", "Encrypted Value Set", "Uses Encryption", "Component Override", "Use Default"])
+    
+  
 
         if isinstance(data, list):
             writer.writerows(data)
