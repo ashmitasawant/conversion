@@ -2,6 +2,8 @@ import csv
 import json
 from pathlib import Path
 def json_to_table(json_data, parent_key='', table=None):
+    with open(json_data, 'r') as json_input:
+        data = json.load(json_input)
     if table is None:
         table = {}
     
@@ -26,7 +28,7 @@ csv_file_path = 'output.csv'
 json_to_table(json_file_path, csv_file_path)
 
 # Convert JSON to nested table structure
-table_structure = json_to_table(json_file_path)
+table_structure = json_to_table(data)
 
 # Print the result
 for key, value in table_structure.items():
