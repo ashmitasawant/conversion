@@ -20,10 +20,10 @@ def json_to_csv(json_file, csv_file):
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(["Field ID", "Encrypted Value Set", "Uses Encryption", "Component Override", "Use Default"])
     
-     if isinstance(data, list):
-            writer.writerows(data)
-        elif isinstance(data, dict):
-            writer.writerow(data)  
+    if isinstance(data, list):
+        writer.writerows(data)
+    elif isinstance(data, dict):
+        writer.writerow(data)  
 
 # Replace 'input.json' and 'output.csv' with your actual file names
 json_file_path = Path(__file__).parent / 'test/test.json'
