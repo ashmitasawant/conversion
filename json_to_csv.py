@@ -1,49 +1,61 @@
-import csv
+import pandas as pd
 import json
 from pathlib import Path
-def json_to_table(json_data, parent_key='', table=None):
-    with open(json_data, 'r') as json_input:
-        json_data = json.load(json_input)
-        
-    if table is None:
-        table = {}
-    
-    if isinstance(json_data, dict):
-        for k, v in json_data.items():
-            new_key = f"{parent_key}/{k}" if parent_key else k
-            json_to_table(v, new_key, table)
-    elif isinstance(json_data, list):
-        for i, item in enumerate(json_data):
-            new_key = f"{parent_key}/{i}" if parent_key else str(i)
-            json_to_table(item, new_key, table)
-    else:
-        table[parent_key] = json_data
-    
-   
 
-
-
-
-
-# Convert JSON to nested table structure
-table_structure = json_to_table(json_data)
-
-# Print the result
-for key, value in table_structure.items():
-    print(f"{key}: {value}")
-
-csv_file_path = 'output.csv'
-with open(csv_file_path, 'w', newline='') as csv_file:
-    csv_writer = csv.writer(csv_file)
-    csv_writer.writerow(['Key', 'Value'])
-
-    for key, value in table_structure.items():
-        csv_writer.writerow([key, value])
-
-print(f"CSV file '{csv_file_path}' created successfully.")
-# Replace 'input.json' and 'output.csv' with your actual file names
+# Specify the path to your JSON file
 json_file_path = Path(__file__).parent / 'test/test.json'
-#json_file_path = '/test/test.json'
-csv_file_path = 'output.csv'
 
-json_to_table(json_file_path, csv_file_path)
+
+# Read JSON data from the file
+with open(json_file_path, 'r') as file:
+    json_data = json.load(file)
+
+# Extract required columns
+data = []
+for item in json_data:
+    if "connection" in item:
+        for connection_item in item["connection"]:
+            data.append(
+                {
+                    "component name": item["name"],
+                    "field": connection_item["id"],
+                    "component type": item["component_type"],
+                    "value": connection_item["value"],
+                }
+            )
+    elif "processProperty" in item:
+        for property_item in item["processProperty"]:
+            data.append(
+                {
+                    "component name": item["name"],
+                    "field": property_item["id"],
+                    "component type": item["component_type"],
+                    "value": property_item["value"],
+                }
+            )
+    elif "crossReference" in item:
+        for reference_item in item["crossReference"]:
+            data.append(
+                {
+                    "component name": item["name"],
+                    "field": reference_item["id"],
+                    "component type": item["component_type"],
+                    "value": reference_item["value"],
+                }
+            )
+    elif "dynamicProcessProperty" in item:
+        for dynamic_property_item in item["dynamicProcessProperty"]:
+            data.append(
+                {
+                    "component name": "dynamicProcessProperty",
+                    "field": dynamic_property_item["id"],
+                    "component type": item["component_type"],
+                    "value": dynamic_property_item["value"],
+                }
+            )
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Save DataFrame to Excel
+df.to_excel("output1.xlsx", index=False)
