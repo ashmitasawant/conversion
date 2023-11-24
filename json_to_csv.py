@@ -59,4 +59,4 @@ for item in json_data:
 df = pd.DataFrame(data)
 
 # Save DataFrame to Excel
-df.to_excel("out.csv", index=False)
+df.to_csv("out.csv", index=False)
