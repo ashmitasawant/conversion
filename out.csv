@@ -1,0 +1,10 @@
+component name,field,component type,value
+Test formdata,url,connection,https://abc.com
+Test formdata,connectionTimeout,connection,23
+Testing formdata,url,connection,https://abcd.com
+Testing formdata,connectionTimeout,connection,24
+PP_TEST,test1,processProperty,test_4444
+PP_TEST,test2,processProperty,test_555
+CRT_TEST,1,crossReference,www
+dynamicProcessProperty,DPP_2,dynamicProcessProperty,1234
+dynamicProcessProperty,DPP_1,dynamicProcessProperty,1111
