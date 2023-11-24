@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 from pathlib import Path
+import csv
 
 # Specify the path to your JSON file
 json_file_path = Path(__file__).parent / 'test/test.json'
@@ -58,4 +59,4 @@ for item in json_data:
 df = pd.DataFrame(data)
 
 # Save DataFrame to Excel
-df.to_excel("output1.csv", index=False)
+df.to_excel("out.csv", index=False)
